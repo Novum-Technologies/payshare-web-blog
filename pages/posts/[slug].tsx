@@ -68,7 +68,7 @@ export const getStaticProps: GetStaticProps = async ({
   previewData,
 }) => {
   const data = await getPostAndMorePosts(params?.slug, preview, previewData)
-
+  console.log(data)
   return {
     props: {
       preview,
@@ -81,6 +81,7 @@ export const getStaticProps: GetStaticProps = async ({
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const allPosts = await getAllPostsWithSlug()
+  console.log(allPosts)
 
   return {
     paths: allPosts.edges.map(({ node }) => `/posts/${node.slug}`) || [],
